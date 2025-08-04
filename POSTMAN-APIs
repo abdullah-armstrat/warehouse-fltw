@@ -1,0 +1,3629 @@
+{
+	"info": {
+		"_postman_id": "e4823c2b-9466-41fb-a197-25f418367140",
+		"name": "Warehouse App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47291875",
+		"_collection_link": "https://abdullah-4c3dbbcd-5866654.postman.co/workspace/Abdullah's-Workspace~8a87e7e7-befe-446d-8d56-65d92c860cce/collection/47291875-e4823c2b-9466-41fb-a197-25f418367140?action=share&source=collection_link&creator=47291875"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "Bootstrap Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Admin User\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"StrongPass123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/auth/bootstrap",
+							"path": [
+								"api",
+								"auth",
+								"bootstrap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"StrongPass123!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"StrongPass123!\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"113-RTG7kcO2LiX5pX47TnQYMsJZhFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:23:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMxMDE4MSwiZXhwIjoxNzU0OTE0OTgxfQ.LzyRvOkyH5mrT5mG9sJjoWvvXc9hDdW_Q9xwwFYLNks\",\n    \"user\": {\n        \"name\": \"Admin User\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"Admin\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Admin Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMjA4MCwiZXhwIjoxNzU0OTA2ODgwfQ.QAekTxoT-cveMtmzwWLeGdRruKBxC1ebG2QrXvh6Knk",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Inventory Lead 2\",\r\n  \"email\": \"inventory@example2.com\",\r\n  \"password\": \"InvPass123!\",\r\n  \"role\": \"InventorySpecialist\",\r\n  \"designation\": \"Inventory Specialist\",\r\n  \"photoUrl\": \"https://example.com/photo.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Admin Create User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMjA4MCwiZXhwIjoxNzU0OTA2ODgwfQ.QAekTxoT-cveMtmzwWLeGdRruKBxC1ebG2QrXvh6Knk",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Inventory Lead 2\",\r\n  \"email\": \"inventory@example2.com\",\r\n  \"password\": \"InvPass123!\",\r\n  \"role\": \"InventorySpecialist\",\r\n  \"designation\": \"Inventory Specialist\",\r\n  \"photoUrl\": \"https://example.com/photo.jpg\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/users",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fa-Enx6qZcwooD9eDuSspxPAu2rjRs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:23:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"6890a652f920e70dc3458d08\",\n        \"name\": \"Inventory Lead 2\",\n        \"email\": \"inventory@example2.com\",\n        \"role\": \"InventorySpecialist\",\n        \"designation\": \"Inventory Specialist\",\n        \"photoUrl\": \"https://example.com/photo.jpg\",\n        \"createdAt\": \"2025-08-04T12:23:46.949Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: List Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/users",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "653"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28d-rBV9qgfvlxSn+MPPXzZV9pBsXuw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:25:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"_id\": \"6890842d7b0b1873d6726842\",\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\",\n            \"role\": \"Admin\",\n            \"createdAt\": \"2025-08-04T09:58:05.603Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6890871f4ab81d4f2883bb7c\",\n            \"name\": \"Inventory Lead\",\n            \"email\": \"inventory@example.com\",\n            \"role\": \"InventorySpecialist\",\n            \"photoUrl\": \"https://example.com/photo.jpg\",\n            \"designation\": \"Inventory Specialist\",\n            \"createdAt\": \"2025-08-04T10:10:39.279Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6890a652f920e70dc3458d08\",\n            \"name\": \"Inventory Lead 2\",\n            \"email\": \"inventory@example2.com\",\n            \"role\": \"InventorySpecialist\",\n            \"photoUrl\": \"https://example.com/photo.jpg\",\n            \"designation\": \"Inventory Specialist\",\n            \"createdAt\": \"2025-08-04T12:23:46.949Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/users/me",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get My Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/users/me",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-K3BnlusPRT87b8vFtIqQ8mY3rMc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:25:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"6890842d7b0b1873d6726842\",\n        \"name\": \"Admin User\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"Admin\",\n        \"createdAt\": \"2025-08-04T09:58:05.603Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "WAREHOUSES",
+			"item": [
+				{
+					"name": "Create Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Secondary Warehouse\",\r\n  \"address\": \"123 Fleetwood St\",\r\n  \"metadata\": {\r\n    \"timezone\": \"UTC+5\",\r\n    \"manager\": \"Inventory Lead 2\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/warehouses",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Create Warehouse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Secondary Warehouse\",\r\n  \"address\": \"123 Fleetwood St\",\r\n  \"metadata\": {\r\n    \"timezone\": \"UTC+5\",\r\n    \"manager\": \"Inventory Lead 2\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/warehouses",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d6-NbGOJ9KvXoVGyFKShxlEyjA89GA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:26:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouse\": {\n        \"name\": \"Secondary Warehouse\",\n        \"address\": \"123 Fleetwood St\",\n        \"metadata\": {\n            \"timezone\": \"UTC+5\",\n            \"manager\": \"Inventory Lead 2\"\n        },\n        \"_id\": \"6890a6dff920e70dc3458d0e\",\n        \"createdAt\": \"2025-08-04T12:26:07.359Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Warehouses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/warehouses",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: List Warehouses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/warehouses",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "414"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19e-QuR41ttUvfk/OeiwWNetJ78jBo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:26:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouses\": [\n        {\n            \"_id\": \"6890a6dff920e70dc3458d0e\",\n            \"name\": \"Secondary Warehouse\",\n            \"address\": \"123 Fleetwood St\",\n            \"metadata\": {\n                \"timezone\": \"UTC+5\",\n                \"manager\": \"Inventory Lead 2\"\n            },\n            \"createdAt\": \"2025-08-04T12:26:07.359Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68908a5289bb588f44fd34e2\",\n            \"name\": \"Main Warehouse\",\n            \"address\": \"456 New Address Ave\",\n            \"metadata\": {\n                \"timezone\": \"UTC+5\",\n                \"manager\": \"Inventory Lead\"\n            },\n            \"createdAt\": \"2025-08-04T10:24:18.619Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Warehouse by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/warehouses/68908a5289bb588f44fd34e2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouses",
+								"68908a5289bb588f44fd34e2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get Warehouse by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/warehouses/68908a5289bb588f44fd34e2",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouses",
+										"68908a5289bb588f44fd34e2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-76X3w502HG/UAMseSgTRPF6/s4A\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:26:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouse\": {\n        \"_id\": \"68908a5289bb588f44fd34e2\",\n        \"name\": \"Main Warehouse\",\n        \"address\": \"456 New Address Ave\",\n        \"metadata\": {\n            \"timezone\": \"UTC+5\",\n            \"manager\": \"Inventory Lead\"\n        },\n        \"createdAt\": \"2025-08-04T10:24:18.619Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Warehouse",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": \"456 New Address Ave\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/warehouses/68908a5289bb588f44fd34e2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouses",
+								"68908a5289bb588f44fd34e2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Update Warehouse",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"address\": \"456 New Address Ave\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/warehouses/68908a5289bb588f44fd34e2",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouses",
+										"68908a5289bb588f44fd34e2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-76X3w502HG/UAMseSgTRPF6/s4A\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:27:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouse\": {\n        \"_id\": \"68908a5289bb588f44fd34e2\",\n        \"name\": \"Main Warehouse\",\n        \"address\": \"456 New Address Ave\",\n        \"metadata\": {\n            \"timezone\": \"UTC+5\",\n            \"manager\": \"Inventory Lead\"\n        },\n        \"createdAt\": \"2025-08-04T10:24:18.619Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "WAREHOUSE LOCATIONS",
+			"item": [
+				{
+					"name": "Create Warehouse Locations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"warehouse\": \"68908a5289bb588f44fd34e2\",\r\n  \"name\": \"Zone B\",\r\n  \"description\": \"Secondary receiving zone\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/warehouse-locations",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouse-locations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Create Warehouse Locations",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"warehouse\": \"68908a5289bb588f44fd34e2\",\r\n  \"name\": \"Zone B\",\r\n  \"description\": \"Secondary receiving zone\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/warehouse-locations",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouse-locations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "199"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c7-YCz/LooCEv5vtEweQ2k1rxX5jDw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:27:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouseLocation\": {\n        \"warehouse\": \"68908a5289bb588f44fd34e2\",\n        \"name\": \"Zone B\",\n        \"description\": \"Secondary receiving zone\",\n        \"_id\": \"6890a731f920e70dc3458d17\",\n        \"createdAt\": \"2025-08-04T12:27:29.272Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Warehouse Locations for a Warehouse",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/warehouse-locations?warehouse=68908a5289bb588f44fd34e2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouse-locations"
+							],
+							"query": [
+								{
+									"key": "warehouse",
+									"value": "68908a5289bb588f44fd34e2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: List Warehouse Locations for a Warehouse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/warehouse-locations?warehouse=68908a5289bb588f44fd34e2",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouse-locations"
+									],
+									"query": [
+										{
+											"key": "warehouse",
+											"value": "68908a5289bb588f44fd34e2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "385"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"181-F2tsN6GVTphjO2zzAP+cmQggyck\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:27:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouseLocations\": [\n        {\n            \"_id\": \"6890a731f920e70dc3458d17\",\n            \"warehouse\": \"68908a5289bb588f44fd34e2\",\n            \"name\": \"Zone B\",\n            \"description\": \"Secondary receiving zone\",\n            \"createdAt\": \"2025-08-04T12:27:29.272Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68908cf163feb7fa116c86a9\",\n            \"warehouse\": \"68908a5289bb588f44fd34e2\",\n            \"name\": \"Zone A - Updated\",\n            \"description\": \"Updated description\",\n            \"createdAt\": \"2025-08-04T10:35:29.912Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Warehouse Location",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Zone A - Updated\",\r\n  \"description\": \"Updated description\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/warehouse-locations/68908cf163feb7fa116c86a9",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouse-locations",
+								"68908cf163feb7fa116c86a9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Update Warehouse Location",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Zone A - Updated\",\r\n  \"description\": \"Updated description\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/warehouse-locations/68908cf163feb7fa116c86a9",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouse-locations",
+										"68908cf163feb7fa116c86a9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "204"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cc-4vU7gA4ZRmo1O1zPOkyCYwNo6J8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:28:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"warehouseLocation\": {\n        \"_id\": \"68908cf163feb7fa116c86a9\",\n        \"warehouse\": \"68908a5289bb588f44fd34e2\",\n        \"name\": \"Zone A - Updated\",\n        \"description\": \"Updated description\",\n        \"createdAt\": \"2025-08-04T10:35:29.912Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Warehouse Location",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMjA4MCwiZXhwIjoxNzU0OTA2ODgwfQ.QAekTxoT-cveMtmzwWLeGdRruKBxC1ebG2QrXvh6Knk",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/warehouse-locations/6890a731f920e70dc3458d17",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"warehouse-locations",
+								"6890a731f920e70dc3458d17"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Delete Warehouse Location",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMjA4MCwiZXhwIjoxNzU0OTA2ODgwfQ.QAekTxoT-cveMtmzwWLeGdRruKBxC1ebG2QrXvh6Knk",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/warehouse-locations/6890a731f920e70dc3458d17",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"warehouse-locations",
+										"6890a731f920e70dc3458d17"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-05sALxLwT1ik9/qZK2sYw2X1co4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:31:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "STORAGE LOCATIONS",
+			"item": [
+				{
+					"name": "Create Storage Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\r\n  \"address\": \"A-1-1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/storage-locations",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"storage-locations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201: Create Storage Location",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\r\n  \"address\": \"A-1-1\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/storage-locations",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"storage-locations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-d+ZzrdJKZlrzJaJ0vp3WUUWpfg0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 11:49:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocation\": {\n        \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n        \"address\": \"A-1-1\",\n        \"isActive\": true,\n        \"_id\": \"68909e5e7529e6d8213083f3\",\n        \"createdAt\": \"2025-08-04T11:49:50.089Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Storage Locations for a Warehouse Location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/storage-locations?warehouseLocation=689097d763feb7fa116c86b0",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"storage-locations"
+							],
+							"query": [
+								{
+									"key": "warehouseLocation",
+									"value": "689097d763feb7fa116c86b0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: List Storage Locations for a Warehouse Location",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/storage-locations?warehouseLocation=689097d763feb7fa116c86b0",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"storage-locations"
+									],
+									"query": [
+										{
+											"key": "warehouseLocation",
+											"value": "689097d763feb7fa116c86b0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15c-GHo7lTuEAk9J1Ezn416BLMTUjgw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 11:49:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocations\": [\n        {\n            \"_id\": \"68909e5e7529e6d8213083f3\",\n            \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n            \"address\": \"A-1-1\",\n            \"isActive\": true,\n            \"createdAt\": \"2025-08-04T11:49:50.089Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68909abc7529e6d8213083e7\",\n            \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n            \"address\": \"B-2-2\",\n            \"isActive\": true,\n            \"createdAt\": \"2025-08-04T11:34:20.788Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Storage Location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"storage-locations",
+								"68909abc7529e6d8213083e7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Update Storage Location",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"storage-locations",
+										"68909abc7529e6d8213083e7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-0BZPrsw/Ilo3PZUeBJioaQE4/vE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 11:47:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocation\": {\n        \"_id\": \"68909abc7529e6d8213083e7\",\n        \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n        \"address\": \"B-2-2\",\n        \"isActive\": true,\n        \"createdAt\": \"2025-08-04T11:34:20.788Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Storage Location by ID",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"storage-locations",
+								"68909abc7529e6d8213083e7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get Storage Location by ID",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isActive\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"storage-locations",
+										"68909abc7529e6d8213083e7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-0BZPrsw/Ilo3PZUeBJioaQE4/vE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 11:48:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocation\": {\n        \"_id\": \"68909abc7529e6d8213083e7\",\n        \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n        \"address\": \"B-2-2\",\n        \"isActive\": true,\n        \"createdAt\": \"2025-08-04T11:34:20.788Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Storage Location",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"storage-locations",
+								"68909abc7529e6d8213083e7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Delete Storage Location",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/storage-locations/68909abc7529e6d8213083e7",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"storage-locations",
+										"68909abc7529e6d8213083e7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-05sALxLwT1ik9/qZK2sYw2X1co4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 11:50:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PRODUCTS",
+			"item": [
+				{
+					"name": "Upload Products CSV",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/Desktop/Fleetwood app/Products.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/products/import",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products",
+								"import"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Upload Products CSV",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Lenovo/Desktop/Fleetwood app/Products.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:4000/api/products/import",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"products",
+										"import"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-4xPjku6EhsYYyI38IN/00kF/r0Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:00:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"imported\": 4,\n    \"errors\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/products/search??q%3Dmario%26category%3DGAM&?q%3DXC\n\n&?category%3DACC%26limit%3D100",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "?q=mario&category=GAM",
+									"value": null
+								},
+								{
+									"key": "?q=XC\n\n",
+									"value": null
+								},
+								{
+									"key": "?category=ACC&limit=100",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Search Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/products/search??q%3Dmario%26category%3DGAM&?q%3DXC\n\n&?category%3DACC%26limit%3D100",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "?q%3Dmario%26category%3DGAM",
+											"value": null
+										},
+										{
+											"key": "?q%3DXC\n\n",
+											"value": null
+										},
+										{
+											"key": "?category%3DACC%26limit%3D100",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "586"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24a-kTutnBAYMsiSaVtDPzsG/9flxc0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:02:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"products\": [\n        {\n            \"_id\": \"6890a0f61f41f0a0b46ff8d5\",\n            \"sku\": \"SM001\",\n            \"__v\": 0,\n            \"category\": \"GAM\",\n            \"createdAt\": \"2025-08-04T12:00:54.969Z\",\n            \"name\": \"Super Mario Kart\"\n        },\n        {\n            \"_id\": \"6890a0f61f41f0a0b46ff8d6\",\n            \"sku\": \"XC002\",\n            \"__v\": 0,\n            \"category\": \"ACC\",\n            \"createdAt\": \"2025-08-04T12:00:54.973Z\",\n            \"name\": \"Xbox Controller\"\n        },\n        {\n            \"_id\": \"6890a0f61f41f0a0b46ff8d7\",\n            \"sku\": \"PS303\",\n            \"__v\": 0,\n            \"category\": \"CON\",\n            \"createdAt\": \"2025-08-04T12:00:54.973Z\",\n            \"name\": \"Playstation 3 (PS3) Console\"\n        },\n        {\n            \"_id\": \"6890a0f61f41f0a0b46ff8d8\",\n            \"sku\": \"3DS01\",\n            \"__v\": 0,\n            \"category\": \"HAN\",\n            \"createdAt\": \"2025-08-04T12:00:54.974Z\",\n            \"name\": \"Nintendo 3DS Aqua Blue\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "QR CODES",
+			"item": [
+				{
+					"name": "Create QR Code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/qr",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Create QR Code",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/qr",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-sNH8AzK+7+VLUI9dJko4YErvunw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:09:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"qr\": {\n        \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n        \"internalId\": \"44def515-4bd7-4a75-98e7-5c3bf91aec58\",\n        \"labelAddress\": \"A-1-1\",\n        \"isActive\": true,\n        \"_id\": \"6890a30ff920e70dc3458cfe\",\n        \"createdAt\": \"2025-08-04T12:09:51.591Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List QR Codes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/qr?isActive%3Dtrue",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr"
+							],
+							"query": [
+								{
+									"key": "isActive=true",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: List QR Codes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/qr?isActive%3Dtrue",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr"
+									],
+									"query": [
+										{
+											"key": "isActive=true",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-pGLLygTScveHZ0gMIWi/HbUVXHo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:42:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"qrcodes\": [\n        {\n            \"_id\": \"6890a30ff920e70dc3458cfe\",\n            \"storageLocation\": {\n                \"_id\": \"68909e5e7529e6d8213083f3\",\n                \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n                \"address\": \"A-1-1\"\n            },\n            \"internalId\": \"44def515-4bd7-4a75-98e7-5c3bf91aec58\",\n            \"labelAddress\": \"A-1-1\",\n            \"isActive\": true,\n            \"createdAt\": \"2025-08-04T12:09:51.591Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get QR Code by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr",
+								"6890a30ff920e70dc3458cfe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get QR Code by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr",
+										"6890a30ff920e70dc3458cfe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-YZeRoHgLUWUP7ROZCjFCstFOCmA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:45:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"qr\": {\n        \"_id\": \"6890a30ff920e70dc3458cfe\",\n        \"storageLocation\": {\n            \"_id\": \"68909e5e7529e6d8213083f3\",\n            \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n            \"address\": \"A-1-1\"\n        },\n        \"internalId\": \"44def515-4bd7-4a75-98e7-5c3bf91aec58\",\n        \"labelAddress\": \"A-1-1\",\n        \"isActive\": true,\n        \"createdAt\": \"2025-08-04T12:09:51.591Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update QR Code",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr",
+								"6890a30ff920e70dc3458cfe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Update QR Code",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isActive\": false\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr",
+										"6890a30ff920e70dc3458cfe"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "225"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e1-QzV6xaxMmB5rieky+NM5uYnZhoA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:57:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"qr\": {\n        \"_id\": \"6890a30ff920e70dc3458cfe\",\n        \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n        \"internalId\": \"44def515-4bd7-4a75-98e7-5c3bf91aec58\",\n        \"labelAddress\": \"A-1-1\",\n        \"isActive\": false,\n        \"createdAt\": \"2025-08-04T12:09:51.591Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete QR Code",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr",
+								"6890a30ff920e70dc3458cfe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Delete QR Code",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr",
+										"6890a30ff920e70dc3458cfe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-05sALxLwT1ik9/qZK2sYw2X1co4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:58:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get QR Code Label Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:4000/api/qr/6890a30ff920e70dc3458cfe",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"qr",
+								"6890a30ff920e70dc3458cfe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get QR Code Label Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:4000/api/qr/6890addff920e70dc3458d2e/label",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"qr",
+										"6890addff920e70dc3458d2e",
+										"label"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-v3Fr3V74AYPfhnZfx1PbJceYTuw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 12:59:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"label\": {\n        \"internalId\": \"c43da983-ca46-4498-a6ae-7015edbf8973\",\n        \"address\": \"C-1-1\",\n        \"isActive\": true,\n        \"createdAt\": \"2025-08-04T12:55:59.084Z\",\n        \"checkboxLabel\": \"Is Active?\",\n        \"scanPayload\": \"c43da983-ca46-4498-a6ae-7015edbf8973\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "INVENTORY",
+			"item": [
+				{
+					"name": "Preview Inventory Adjustment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\",\r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"delta\": 5,\r\n  \"validate\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/inventory/adjust",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"inventory",
+								"adjust"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Preview Inventory Adjustment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\",\r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"delta\": 5,\r\n  \"validate\": false\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/inventory/adjust",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"inventory",
+										"adjust"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-zrICCaDQKvaUzuqaFo1yjSBnh70\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 13:13:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"preview\": {\n        \"currentQuantity\": 0,\n        \"proposedQuantity\": 5,\n        \"delta\": 5\n    },\n    \"message\": \"Adjustment preview (not validated)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Validate Inventory Adjustment (+/-)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\",\r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"delta\": -2,\r\n  \"validate\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/inventory/adjust",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"inventory",
+								"adjust"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Validate Inventory Adjustment (ADD)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\",\r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"delta\": 5,\r\n  \"validate\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/inventory/adjust",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"inventory",
+										"adjust"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-KbxCafNfK9oOofFNORyWdLrtBi0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 13:16:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"inventoryEntry\": {\n        \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n        \"product\": \"6890a0f61f41f0a0b46ff8d5\",\n        \"quantity\": 5,\n        \"_id\": \"6890b2b1b8827344bebaa4c2\",\n        \"updatedAt\": \"2025-08-04T13:16:33.139Z\",\n        \"lastUpdatedBy\": \"6890842d7b0b1873d6726842\",\n        \"__v\": 0\n    },\n    \"message\": \"Adjustment validated and saved\"\n}"
+						},
+						{
+							"name": "200: Validate Inventory Adjustment (REMOVE)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"storageLocationId\": \"68909e5e7529e6d8213083f3\",\r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"delta\": -2,\r\n  \"validate\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/api/inventory/adjust",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"inventory",
+										"adjust"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-T1Wtcdc0l3Pk4YA7j8KtuYSaNoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 13:17:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"inventoryEntry\": {\n        \"_id\": \"6890b2b1b8827344bebaa4c2\",\n        \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n        \"product\": \"6890a0f61f41f0a0b46ff8d5\",\n        \"quantity\": 3,\n        \"updatedAt\": \"2025-08-04T13:17:35.455Z\",\n        \"lastUpdatedBy\": \"6890842d7b0b1873d6726842\",\n        \"__v\": 0\n    },\n    \"message\": \"Adjustment validated and saved\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Shelf Detail / Get Inventory by Storage Location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE-URL}}/inventory/by-storage-location/68909e5e7529e6d8213083f3",
+							"host": [
+								"{{BASE-URL}}"
+							],
+							"path": [
+								"inventory",
+								"by-storage-location",
+								"68909e5e7529e6d8213083f3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Get Inventory by Storage Location",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE-URL}}/inventory/by-storage-location/68909e5e7529e6d8213083f3",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"inventory",
+										"by-storage-location",
+										"68909e5e7529e6d8213083f3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "371"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"173-SqUpuUVNke1G/rbL4wLy++BYHKU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 13:26:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"inventory\": [\n        {\n            \"_id\": \"6890b2b1b8827344bebaa4c2\",\n            \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n            \"product\": {\n                \"_id\": \"6890a0f61f41f0a0b46ff8d5\",\n                \"sku\": \"SM001\",\n                \"category\": \"GAM\",\n                \"name\": \"Super Mario Kart\"\n            },\n            \"quantity\": 3,\n            \"updatedAt\": \"2025-08-04T13:17:35.455Z\",\n            \"lastUpdatedBy\": {\n                \"_id\": \"6890842d7b0b1873d6726842\",\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\",\n                \"role\": \"Admin\"\n            },\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Activity Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE-URL}}/inventory/logs?user%3DAdmin",
+							"host": [
+								"{{BASE-URL}}"
+							],
+							"path": [
+								"inventory",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "user%3DAdmin",
+									"value": null
+								},
+								{
+									"key": "product=",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "storageLocation=",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit=",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Fetch Activity Logs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE-URL}}/inventory/logs?user%3DAdmin",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"inventory",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "user%3DAdmin",
+											"value": null
+										},
+										{
+											"key": "product=",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "storageLocation=",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "limit=",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "763"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fb-H9AcqpIDvk1if/by1csTsAEEaBM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 13:29:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"logs\": [\n        {\n            \"_id\": \"6890b2efb8827344bebaa4cb\",\n            \"user\": {\n                \"_id\": \"6890842d7b0b1873d6726842\",\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\",\n                \"role\": \"Admin\"\n            },\n            \"action\": \"Admin User Removed Super Mario Kart x2 to/from A-1-1\",\n            \"details\": {\n                \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n                \"product\": \"6890a0f61f41f0a0b46ff8d5\",\n                \"delta\": -2,\n                \"resultingQuantity\": 3\n            },\n            \"timestamp\": \"2025-08-04T13:17:35.465Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6890b2b1b8827344bebaa4c4\",\n            \"user\": {\n                \"_id\": \"6890842d7b0b1873d6726842\",\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\",\n                \"role\": \"Admin\"\n            },\n            \"action\": \"Admin User Added Super Mario Kart x5 to/from A-1-1\",\n            \"details\": {\n                \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n                \"product\": \"6890a0f61f41f0a0b46ff8d5\",\n                \"delta\": 5,\n                \"resultingQuantity\": 5\n            },\n            \"timestamp\": \"2025-08-04T13:16:33.147Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SCAN QR CODE",
+			"item": [
+				{
+					"name": "Resolve Scan Code / Shelf Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE-URL}}/scan/A-1-1",
+							"host": [
+								"{{BASE-URL}}"
+							],
+							"path": [
+								"scan",
+								"A-1-1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Manual Location Search via Address",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE-URL}}/scan/A-1-1",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"scan",
+										"A-1-1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "443"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1bb-8dXTA7pvnSA7n5osx8YWRTU4/70\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 14:05:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocation\": {\n        \"_id\": \"68909e5e7529e6d8213083f3\",\n        \"address\": \"A-1-1\",\n        \"isActive\": true\n    },\n    \"inventory\": [\n        {\n            \"_id\": \"6890b2b1b8827344bebaa4c2\",\n            \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n            \"product\": {\n                \"_id\": \"6890a0f61f41f0a0b46ff8d5\",\n                \"sku\": \"SM001\",\n                \"category\": \"GAM\",\n                \"name\": \"Super Mario Kart\"\n            },\n            \"quantity\": 3,\n            \"updatedAt\": \"2025-08-04T13:17:35.455Z\",\n            \"lastUpdatedBy\": {\n                \"_id\": \"6890842d7b0b1873d6726842\",\n                \"name\": \"Admin User\",\n                \"role\": \"Admin\"\n            },\n            \"__v\": 0\n        }\n    ],\n    \"qrcodes\": []\n}"
+						},
+						{
+							"name": "200: QR Code Scan",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE-URL}}/scan/c43da983-ca46-4498-a6ae-7015edbf8973",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"scan",
+										"c43da983-ca46-4498-a6ae-7015edbf8973"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "333"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14d-hWyw/tA7XKn5pRztelaEYxBFghs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 14:10:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"storageLocation\": {\n        \"_id\": \"6890adbdf920e70dc3458d2a\",\n        \"address\": \"C-1-1\",\n        \"isActive\": true\n    },\n    \"inventory\": [],\n    \"qrcodes\": [\n        {\n            \"_id\": \"6890addff920e70dc3458d2e\",\n            \"storageLocation\": \"6890adbdf920e70dc3458d2a\",\n            \"internalId\": \"c43da983-ca46-4498-a6ae-7015edbf8973\",\n            \"labelAddress\": \"C-1-1\",\n            \"isActive\": true,\n            \"createdAt\": \"2025-08-04T12:55:59.084Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product Locations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE-URL}}product-locations/6890a0f61f41f0a0b46ff8d5/locations",
+							"host": [
+								"{{BASE-URL}}product-locations"
+							],
+							"path": [
+								"6890a0f61f41f0a0b46ff8d5",
+								"locations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Product Locations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE-URL}}/product-locations/6890a0f61f41f0a0b46ff8d5/locations",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"product-locations",
+										"6890a0f61f41f0a0b46ff8d5",
+										"locations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "253"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fd-Y+e5rC46PZjAaofss9yuhenz2rA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 14:33:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productLocations\": [\n        {\n            \"storageLocation\": {\n                \"_id\": \"68909e5e7529e6d8213083f3\",\n                \"warehouseLocation\": \"689097d763feb7fa116c86b0\",\n                \"address\": \"A-1-1\",\n                \"isActive\": true\n            },\n            \"quantity\": 3,\n            \"lastUpdatedBy\": \"6890842d7b0b1873d6726842\",\n            \"updatedAt\": \"2025-08-04T13:17:35.455Z\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PICKER",
+			"item": [
+				{
+					"name": "Picker Pick Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+								"description": "ADMIN AUTH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"scanCode\": \"68909e5e7529e6d8213083f3\", \r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"quantity\": 2\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE-URL}}/inventory/pick",
+							"host": [
+								"{{BASE-URL}}"
+							],
+							"path": [
+								"inventory",
+								"pick"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200: Picker Pick Item",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTA4NDJkN2IwYjE4NzNkNjcyNjg0MiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NDMwMTkzMiwiZXhwIjoxNzU0OTA2NzMyfQ.TnBDba0mcyvmU79p0zyb_lTYUupTr2uAGa7OZiZXwmg",
+										"description": "ADMIN AUTH",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"scanCode\": \"A-1-1\", \r\n  \"productId\": \"6890a0f61f41f0a0b46ff8d5\",\r\n  \"quantity\": 2\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE-URL}}/inventory/pick",
+									"host": [
+										"{{BASE-URL}}"
+									],
+									"path": [
+										"inventory",
+										"pick"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-iL4/jXj+Q+45ZnnXWD9zFlHTvr8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Aug 2025 15:23:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"inventoryEntry\": {\n        \"_id\": \"6890b2b1b8827344bebaa4c2\",\n        \"storageLocation\": \"68909e5e7529e6d8213083f3\",\n        \"product\": \"6890a0f61f41f0a0b46ff8d5\",\n        \"quantity\": 11,\n        \"updatedAt\": \"2025-08-04T15:23:01.937Z\",\n        \"lastUpdatedBy\": \"6890842d7b0b1873d6726842\",\n        \"__v\": 0\n    },\n    \"message\": \"Pick validated and inventory updated\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE-URL",
+			"value": "localhost:4000",
+			"type": "default"
+		}
+	]
+}

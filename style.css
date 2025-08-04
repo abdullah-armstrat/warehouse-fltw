@@ -1,0 +1,262 @@
+:root {
+  --bg: #0f111a;
+  --surface: #1f2435;
+  --radius: 12px;
+  --shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  --accent: #7c3aed;
+  --muted: #6f7eaa;
+  --border: 1px solid rgba(255, 255, 255, 0.07);
+  --radius-sm: 6px;
+  --transition: .3s cubic-bezier(.4, .2, .2, 1);
+  --code-bg: rgba(255, 255, 255, 0.03);
+  --text: #e9ecff;
+  --text-light: rgba(233, 236, 255, .75);
+  --mono: "SFMono-Regular", Consolas, "Andale Mono", "Ubuntu Mono", monospace;
+  font-synthesis: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f111a 0%, #1e243a 70%);
+  color: var(--text);
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 1rem 4rem;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.badge {
+  background: var(--accent);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.layout {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  flex: 0 0 280px;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1rem 1.5rem;
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.nav-list li {
+  margin-bottom: 6px;
+}
+
+.nav-list a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background var(--transition);
+}
+
+.nav-list a:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.note {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  margin-top: 0;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.endpoint {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.endpoint-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.method {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+}
+
+.get { background: #16a34a; color: #fff; }
+.post { background: #2563eb; color: #fff; }
+.patch { background: #f59e0b; color: #1f1f1f; }
+.delete { background: #dc2626; color: #fff; }
+
+.endpoint h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.path {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.example {
+  margin-top: 10px;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.roles {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 8px 0 16px;
+}
+
+.role {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1050px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: relative;
+    top: auto;
+    width: 100%;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+  .sidebar { display: none; }
+  .method { page-break-inside: avoid; }
+  pre { background: #f4f4f4; color: #222; }
+  .endpoint {
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+}

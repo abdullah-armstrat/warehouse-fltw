@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fleetwood Warehouse API Documentation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title-block">
+        <h1>Fleetwood Warehouse API Docs</h1>
+        <p class="subtitle">Backend APIs for warehouse management: auth, inventory, QR, scanning, picking, and hierarchy.</p>
+      </div>
+      <div class="meta">
+        <span class="badge">Version: 1.0</span>
+        <span class="badge">Last Updated: August 4, 2025</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav class="sidebar">
+        <h2>Quick Navigation</h2>
+        <ul class="nav-list">
+          <li><a href="#authentication-roles">Authentication & Roles</a></li>
+          <li><a href="#user-management">User Management</a></li>
+          <li><a href="#warehouse-hierarchy">Warehouse</a></li>
+          <li><a href="#warehouse-location">Warehouse Location</a></li>
+          <li><a href="#storage-location">Storage Location</a></li>
+          <li><a href="#products-search">Products & Search</a></li>
+          <li><a href="#qr-code-management">QR Code Management</a></li>
+          <li><a href="#inventory-picker-flow">Inventory & Picker Flow</a></li>
+          <li><a href="#scan-shelf-resolve">Scan / Shelf Resolve</a></li>
+          <li><a href="#product-locations">Product Locations</a></li>
+        </ul>
+        <div class="note">
+          <p><strong>Auth:</strong> Bearer token required on protected routes.</p>
+          <p><strong>Picker:</strong> Can only remove inventory via `/inventory/pick`.</p>
+        </div>
+      </nav>
+
+      <main class="content">
+        <!-- Authentication & Roles -->
+        <section id="authentication-roles" class="section">
+          <h2>Authentication & Roles</h2>
+          <p>JWT-based auth. Include header on protected endpoints:</p>
+          <pre><code>Authorization: Bearer &lt;JWT_TOKEN&gt;</code></pre>
+          <div class="roles">
+            <div class="role">Admin: full access.</div>
+            <div class="role">InventorySpecialist: create/edit locations, add/remove inventory, manage QR.</div>
+            <div class="role">Picker: remove-only via picker flow.</div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>01 - Bootstrap Admin <span class="path">/api/auth/bootstrap</span></h3>
+            </div>
+            <p>Create the first admin user.</p>
+            <div class="example">
+              <div class="label">Request Body:</div>
+              <pre><code>{
+  "name": "Admin User",
+  "email": "admin@example.com",
+  "password": "StrongPass123!"
+}</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "token": "&lt;JWT&gt;",
+  "user": {
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "role": "Admin"
+  }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>02 - Login <span class="path">/api/auth/login</span></h3>
+            </div>
+            <p>Authenticate existing user.</p>
+            <div class="example">
+              <div class="label">Request Body:</div>
+              <pre><code>{
+  "email": "admin@example.com",
+  "password": "StrongPass123!"
+}</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "token": "&lt;JWT&gt;",
+  "user": {
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "role": "Admin"
+  }
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- User Management -->
+        <section id="user-management" class="section">
+          <h2>User Management</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>03 - Admin Create User <span class="path">/api/users</span></h3>
+            </div>
+            <p>Create InventorySpecialist or Picker (Admin only).</p>
+            <div class="example">
+              <div class="label">Request Headers:</div>
+              <pre><code>Authorization: Bearer &lt;Admin JWT&gt;</code></pre>
+              <div class="label">Request Body:</div>
+              <pre><code>{
+  "name": "Inventory Lead",
+  "email": "inventory@example.com",
+  "password": "InvPass123!",
+  "role": "InventorySpecialist",
+  "designation": "Inventory Specialist",
+  "photoUrl": "https://example.com/photo.jpg"
+}</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "user": {
+    "_id": "...",
+    "name": "Inventory Lead",
+    "email": "inventory@example.com",
+    "role": "InventorySpecialist",
+    "designation": "Inventory Specialist",
+    "photoUrl": "...",
+    "createdAt": "2025-08-04T..."
+  }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>04 - List Users <span class="path">/api/users</span></h3>
+            </div>
+            <p>Admin retrieves all users.</p>
+            <div class="example">
+              <div class="label">Headers:</div>
+              <pre><code>Authorization: Bearer &lt;Admin JWT&gt;</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "users": [
+    {
+      "_id":"...",
+      "name":"Admin User",
+      "email":"admin@example.com",
+      "role":"Admin"
+    },
+    {
+      "_id":"...",
+      "name":"Inventory Lead",
+      "email":"inventory@example.com",
+      "role":"InventorySpecialist"
+    }
+  ]
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>05 - Get My Profile <span class="path">/api/users/me</span></h3>
+            </div>
+            <p>Authenticated user fetches their own profile.</p>
+          </div>
+        </section>
+
+        <!-- Warehouse -->
+        <section id="warehouse-hierarchy" class="section">
+          <h2>Warehouse</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>06 - Create Warehouse <span class="path">/api/warehouses</span></h3>
+            </div>
+            <p>Admin creates a warehouse.</p>
+            <div class="example">
+              <div class="label">Request Body:</div>
+              <pre><code>{
+  "name": "Main Warehouse",
+  "address": "123 Fleetwood St",
+  "metadata": {
+    "timezone": "UTC+5",
+    "manager": "Inventory Lead"
+  }
+}</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "warehouse": {
+    "_id":"...",
+    "name":"Main Warehouse",
+    "address":"123 Fleetwood St",
+    "metadata": {...},
+    "createdAt":"..."
+  }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>07 - List Warehouses <span class="path">/api/warehouses</span></h3>
+            </div>
+            <p>Admin lists warehouses.</p>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>08 - Get Warehouse by ID <span class="path">/api/warehouses/{id}</span></h3>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method patch">PATCH</span>
+              <h3>09 - Update Warehouse <span class="path">/api/warehouses/{id}</span></h3>
+            </div>
+            <div class="example">
+              <div class="label">Body:</div>
+              <pre><code>{
+  "address": "456 New Address Ave"
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Warehouse Location -->
+        <section id="warehouse-location" class="section">
+          <h2>Warehouse Location</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>10 - Create Warehouse Location <span class="path">/api/warehouse-locations</span></h3>
+            </div>
+            <p>Admin or InventorySpecialist creates a zone under a warehouse.</p>
+            <div class="example">
+              <pre><code>{
+  "warehouse": "68908a5289bb588f44fd34e2",
+  "name": "Zone A",
+  "description": "Primary receiving zone"
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>11 - List Warehouse Locations <span class="path">/api/warehouse-locations?warehouse=...</span></h3>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method patch">PATCH</span>
+              <h3>13 - Update Warehouse Location <span class="path">/api/warehouse-locations/{id}</span></h3>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method delete">DELETE</span>
+              <h3>14 - Delete Warehouse Location <span class="path">/api/warehouse-locations/{id}</span></h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- Storage Location -->
+        <section id="storage-location" class="section">
+          <h2>Storage Location (Shelf / Bin)</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>15 - Create Storage Location <span class="path">/api/storage-locations</span></h3>
+            </div>
+            <div class="example">
+              <pre><code>{
+  "warehouseLocation": "689097d763feb7fa116c86b0",
+  "address": "A-1-1"
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>16 - List Storage Locations <span class="path">/api/storage-locations?warehouseLocation=...</span></h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products-search" class="section">
+          <h2>Products & Search</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>20 - Upload Products CSV <span class="path">/api/products/import</span></h3>
+            </div>
+            <p>Form-data field <code>file</code> containing CSV: <code>name,sku,category</code>.</p>
+            <div class="example">
+              <div class="label">Sample CSV:</div>
+              <pre><code>name,sku,category
+Super Mario Kart,SM001,GAM
+Xbox Controller,XC002,ACC
+Playstation 3 (PS3) Console,PS303,CON
+Nintendo 3DS Aqua Blue,3DS01,HAN</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "imported": 4,
+  "errors": []
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>21 - Search Products <span class="path">/api/products/search?q=Mario&amp;category=GAM</span></h3>
+            </div>
+            <p>Text-score search with optional category.</p>
+            <div class="example">
+              <pre><code>{
+  "products": [
+    {
+      "_id":"...",
+      "name":"Super Mario Kart",
+      "sku":"SM001",
+      "category":"GAM"
+    }
+  ]
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- QR Codes -->
+        <section id="qr-code-management" class="section">
+          <h2>QR Code Management</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>22 - Create QR Code <span class="path">/api/qr</span></h3>
+            </div>
+            <div class="example">
+              <pre><code>{
+  "storageLocationId": "68909e5e7529e6d8213083f3"
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>23 - List QR Codes <span class="path">/api/qr</span></h3>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>27 - Get QR Code Label Data <span class="path">/api/qr/{id}/label</span></h3>
+            </div>
+            <div class="example">
+              <pre><code>{
+  "label": {
+    "internalId": "...",
+    "address": "A-1-1",
+    "isActive": true,
+    "checkboxLabel": "Is Active?",
+    "scanPayload": "..."
+  }
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Inventory & Picker -->
+        <section id="inventory-picker-flow" class="section">
+          <h2>Inventory & Picker Flow</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>28 - Preview Inventory Adjustment <span class="path">/api/inventory/adjust</span></h3>
+            </div>
+            <p>Preview without committing.</p>
+            <div class="example">
+              <pre><code>{
+  "storageLocationId": "...",
+  "productId": "...",
+  "delta": 5,
+  "validate": false
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>29 - Validate Inventory Adjustment <span class="path">/api/inventory/adjust</span></h3>
+            </div>
+            <div class="example">
+              <div class="label">Add stock:</div>
+              <pre><code>{
+  "storageLocationId": "...",
+  "productId": "...",
+  "delta": 5,
+  "validate": true
+}</code></pre>
+              <div class="label">Remove stock:</div>
+              <pre><code>{
+  "storageLocationId": "...",
+  "productId": "...",
+  "delta": -2,
+  "validate": true
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <h3>34 - Picker Pick Item <span class="path">/api/inventory/pick</span></h3>
+            </div>
+            <p>Picker removes quantity using scanCode.</p>
+            <div class="example">
+              <pre><code>{
+  "scanCode": "A-1-1",
+  "productId": "6890a0f61f41f0a0b46ff8d5",
+  "quantity": 2
+}</code></pre>
+              <div class="label">Response:</div>
+              <pre><code>{
+  "inventoryEntry": { "quantity": 11, ... },
+  "message": "Pick validated and inventory updated"
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>30 - Shelf Detail <span class="path">/api/inventory/by-storage-location/{id}</span></h3>
+            </div>
+            <p>Fetch inventory at a storage location.</p>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>31 - Fetch Activity Logs <span class="path">/api/inventory/logs</span></h3>
+            </div>
+            <p>Filter: user, product, storageLocation, limit.</p>
+          </div>
+        </section>
+
+        <!-- Scan -->
+        <section id="scan-shelf-resolve" class="section">
+          <h2>Scan / Shelf Resolve</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>32 - Resolve Scan Code <span class="path">/api/scan/{code}</span></h3>
+            </div>
+            <p>Resolve QR internalId or address like <code>A-1-1</code> to shelf detail.</p>
+            <div class="example">
+              <pre><code>{
+  "storageLocation": { "address":"A-1-1", "isActive": true },
+  "inventory": [ /* entries */ ],
+  "qrcodes": [ /* related QR codes */ ]
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Product Locations -->
+        <section id="product-locations" class="section">
+          <h2>Product Locations</h2>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <h3>33 - Get Product Locations <span class="path">/api/product-locations/{productId}/locations</span></h3>
+            </div>
+            <p>List all storage locations containing the product.</p>
+            <div class="example">
+              <pre><code>{
+  "productLocations": [
+    {
+      "storageLocation": { "address":"A-1-1", ... },
+      "quantity": 3,
+      "lastUpdatedBy": { "name":"Admin User" },
+      "updatedAt": "..."
+    }
+  ]
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Legend -->
+        <section class="section">
+          <h2>Legend & Conventions</h2>
+          <ul>
+            <li>Method indicators: GET / POST / PATCH / DELETE.</li>
+            <li>Inventory adjust requires <code>validate: true</code> to commit.</li>
+            <li>Picker flow uses <code>/inventory/pick</code> and only removes stock.</li>
+            <li>QR label endpoint <code>/api/qr/{id}/label</code> returns payload for printing (address, internalId, checkbox, etc.).</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
